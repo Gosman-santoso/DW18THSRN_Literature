@@ -1,0 +1,24 @@
+.list-literature {
+  width: 80%;
+  margin: auto;
+}
+
+.list-literature h1,
+.list-literature p,
+.list-literature h5 {
+  color: white;
+  font-family: "Poppins";
+}
+
+.list-literature ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.list-literature ul div {
+  width: 300px;
+}
+/*# sourceMappingURL=literature.css.map */

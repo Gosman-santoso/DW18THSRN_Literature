@@ -1,0 +1,64 @@
+.box-literature {
+  background: #161616;
+  width: 100%;
+  height: 91vh;
+  padding-top: 6%;
+}
+
+.box-literature h1 {
+  font-family: "Times New Roman";
+  color: #ebebeb;
+}
+
+.box-literature p {
+  color: #ebebeb;
+  font-family: "Poppins";
+}
+
+.box-literature form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 80%;
+  margin: auto;
+}
+
+.box-literature form input {
+  margin: 10px 0;
+  padding: 5px 10px;
+  border: 2px solid #b4b4b4;
+  border-radius: 5px;
+  color: white;
+  background: #525252;
+}
+
+.box-literature form ::-webkit-input-placeholder {
+  color: #cecece;
+}
+
+.box-literature form :-ms-input-placeholder {
+  color: #cecece;
+}
+
+.box-literature form ::-ms-input-placeholder {
+  color: #cecece;
+}
+
+.box-literature form ::placeholder {
+  color: #cecece;
+}
+
+.box-literature form button {
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  padding: 8px 10px;
+  background: #ee4622;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+/*# sourceMappingURL=add.css.map */

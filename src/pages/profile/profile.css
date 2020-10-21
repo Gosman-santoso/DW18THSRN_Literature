@@ -1,0 +1,116 @@
+.box-profile {
+  background-color: #292929;
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 5%;
+}
+
+.box-profile .profile-data {
+  width: 80%;
+  margin: auto;
+}
+
+.box-profile .profile-data p,
+.box-profile .profile-data h5 {
+  color: white;
+  font-family: "Poppins";
+}
+
+.box-profile .profile-data h1 {
+  font-size: 28px;
+  margin-bottom: 3vh;
+  font-family: "Times New Roman", Times, serif;
+  color: white;
+}
+
+.box-profile .profile-data .cover-profile {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+  min-height: 43vh;
+  padding: 3vh 0;
+  background: #292929;
+}
+
+.box-profile .profile-data .cover-profile ul {
+  list-style: none;
+  margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.box-profile .profile-data .cover-profile ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.box-profile .profile-data .cover-profile ul li .logo-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+  -webkit-transform: translateY(0.5vh);
+          transform: translateY(0.5vh);
+  color: white;
+}
+
+.box-profile .profile-data .cover-profile ul li span {
+  display: block;
+}
+
+.box-profile .profile-data .cover-profile ul li h5 {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.box-profile .profile-data .cover-profile .box-gambar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 30vh;
+  min-height: 30vh;
+}
+
+.box-profile .profile-data .cover-profile .box-gambar img {
+  width: 100%;
+  height: 30vh;
+  background: white;
+  border-radius: 8px;
+}
+
+.box-profile .profile-data .cover-profile .box-gambar input {
+  width: 100%;
+  margin-top: 2vh;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  border: none;
+}
+
+.box-profile .profile-data .cover-profile .box-gambar button {
+  padding: 8px 13px;
+  background: #ee4622;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  width: 100%;
+}
+/*# sourceMappingURL=profile.css.map */

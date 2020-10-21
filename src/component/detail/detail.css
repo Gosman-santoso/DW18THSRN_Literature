@@ -1,0 +1,11 @@
+.box-detail {
+  width: 80%;
+  margin: auto;
+}
+
+.box-detail .cover-detail {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+/*# sourceMappingURL=detail.css.map */

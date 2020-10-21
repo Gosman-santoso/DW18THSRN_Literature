@@ -1,0 +1,19 @@
+.box-collection {
+  background: #292929;
+  height: 100vh;
+}
+
+.box-collection .list-literature {
+  width: 80%;
+  margin: auto;
+}
+
+.box-collection .list-literature h1 {
+  color: white;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.box-collection .list-literature ul {
+  list-style: none;
+}
+/*# sourceMappingURL=collection.css.map */

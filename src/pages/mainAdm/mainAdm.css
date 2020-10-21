@@ -1,0 +1,7 @@
+.box-mainAdm {
+    width: 100%;
+    margin: auto;
+    transform: translateY(-15%);
+    position: relative;
+    z-index: 10;
+}

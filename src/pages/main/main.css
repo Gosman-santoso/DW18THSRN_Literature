@@ -1,0 +1,17 @@
+.box-main {
+  background: #292929;
+  min-height: 100vh;
+  width: 100%;
+  padding-bottom: 10%;
+}
+
+.box-main .box-search {
+  max-width: 500px;
+  margin: auto;
+}
+
+.box-main .box-search img {
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+/*# sourceMappingURL=main.css.map */

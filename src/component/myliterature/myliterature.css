@@ -1,0 +1,96 @@
+.list-book {
+  min-height: 50vh;
+  margin: 0;
+  padding-bottom: 5vh;
+}
+
+.list-book h1 {
+  margin-bottom: 1vh;
+}
+
+.list-book ul {
+  list-style: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.list-book ul li {
+  width: 18%;
+  margin-right: 3vh;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.list-book ul div {
+  width: 100%;
+  height: 50vh;
+  position: relative;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.list-book ul div img {
+  width: 100%;
+  height: 40vh;
+  border-radius: 8px;
+  background: whitesmoke;
+}
+
+.list-book ul div h5,
+.list-book ul div p {
+  padding: 0 5px;
+  overflow: hidden;
+}
+
+.list-book ul div h5 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-top: 5px;
+}
+
+.list-book ul div p {
+  display: inline-block;
+  position: absolute;
+  bottom: -2.5vh;
+  font-size: 14px;
+}
+
+.list-book ul div .overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.74);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.list-book ul div .overlay h5 {
+  display: inline-block;
+  color: #333333;
+}
+
+.list-book ul div:hover {
+  opacity: 0.6;
+  cursor: pointer;
+}
+/*# sourceMappingURL=myliterature.css.map */

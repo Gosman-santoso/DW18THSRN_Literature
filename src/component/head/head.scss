@@ -1,0 +1,24 @@
+$primary-color: rgb(41, 41, 41);
+$primary-text: white;
+$font: "Poppins",
+sans-serif;
+.box-header {
+    background-color: $primary-color;
+    font-family: $font;
+    nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 82%;
+        margin: auto;
+        ul {
+            // margin-left: 5%;
+            a {
+                color: $primary-text;
+            }
+        }
+        .logo-img {
+            // transform: translateX(-100px);
+        }
+    }
+}

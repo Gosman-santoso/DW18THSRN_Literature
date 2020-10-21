@@ -1,0 +1,87 @@
+$primary-color: rgb(41, 41, 41);
+$primary-text: white;
+$font: "Poppins";
+.box-profile {
+    background-color: $primary-color;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 5%;
+    .profile-data {
+        width: 80%;
+        margin: auto;
+        p,
+        h5 {
+            color: $primary-text;
+            font-family: $font;
+        }
+        h1 {
+            font-size: 28px;
+            margin-bottom: 3vh;
+            font-family: "Times New Roman", Times, serif;
+            color: $primary-text;
+        }
+        .cover-profile {
+            // background: salmon;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            min-height: 43vh;
+            padding: 3vh 0;
+            background: #292929;
+            ul {
+                list-style: none;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                // background: lightblue;
+                li {
+                    display: flex;
+                    align-items: center;
+                    .logo-icon {
+                        width: 20px;
+                        height: 20px;
+                        margin-right: 5px;
+                        transform: translateY(0.5vh);
+                        color: white;
+                    }
+                    span {
+                        display: block;
+                    }
+                    h5 {
+                        font-size: 15px;
+                        font-weight: 700;
+                    }
+                }
+            }
+            .box-gambar {
+                display: flex;
+                flex-direction: column;
+                width: 30vh;
+                min-height: 30vh;
+                // background: lightgreen;
+                img {
+                    width: 100%;
+                    height: 30vh;
+                    background: rgb(255, 255, 255);
+                    border-radius: 8px;
+                }
+                input {
+                    width: 100%;
+                    margin-top: 2vh;
+                    border-radius: 5px;
+                    margin-bottom: 5px;
+                    border: none;
+                }
+                button {
+                    padding: 8px 13px;
+                    background: #ee4622;
+                    border: none;
+                    color: white;
+                    border-radius: 5px;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

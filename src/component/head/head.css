@@ -1,0 +1,23 @@
+.box-header {
+  background-color: #292929;
+  font-family: "Poppins", sans-serif;
+}
+
+.box-header nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 82%;
+  margin: auto;
+}
+
+.box-header nav ul a {
+  color: white;
+}
+/*# sourceMappingURL=head.css.map */

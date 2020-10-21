@@ -1,0 +1,18 @@
+$primary-color: rgb(41, 41, 41);
+$primary-text: white;
+$font: "Poppins";
+.box-collection {
+    background: $primary-color;
+    height: 100vh;
+    .list-literature {
+        width: 80%;
+        margin: auto;
+        h1 {
+            color: $primary-text;
+            font-family: "Times New Roman", Times, serif;
+        }
+        ul {
+            list-style: none;
+        }
+    }
+}
