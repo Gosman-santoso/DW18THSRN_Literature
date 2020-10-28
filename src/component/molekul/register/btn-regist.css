@@ -1,0 +1,32 @@
+.modalRegist {
+    margin-top: 7vh;
+}
+
+.modal-body {
+    background: #161616;
+    color: white;
+}
+
+.box-regist .landing-btn-regist {
+    background: #AF2E1C;
+    color: white;
+    border: none;
+    padding: 1.5vh 8vh;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+form .title-sign {
+    font-weight: bold;
+}
+
+form .register-btn {
+    background: #AF2E1C;
+    border: none;
+    width: 100%;
+    padding: 1.5vh 0;
+    border-radius: 5px;
+    color: white;
+    margin-top: 10px;
+    font-weight: bold;
+}

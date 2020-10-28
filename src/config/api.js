@@ -12,3 +12,8 @@ export const setAuthToken = token => {
         delete API.defaults.headers.common["Authorization"];
     }
 };
+
+export const urlAsset = {
+    img: "http://localhost:5000/uploads/img/",
+    pdf: "http://localhost:5000/uploads/pdf/"
+};

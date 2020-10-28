@@ -5,6 +5,8 @@ import { Link, useHistory } from "react-router-dom";
 import { API, setAuthToken } from "../../../config/api";
 import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
 
+import "./btn-login.css";
+
 function BtnLogin() {
   const [show, setShow] = useState(false);
   const [state, dispatch] = useContext(Context);
@@ -21,9 +23,9 @@ function BtnLogin() {
 
   const { email, password } = formData;
 
-  useEffect(() => {
-    console.log(formData);
-  }, [formData]);
+  // useEffect(() => {
+  //   console.log(formData);
+  // }, [formData]);
 
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -88,16 +90,18 @@ function BtnLogin() {
 
   return (
     <div className="box-login">
-      <button onClick={() => handleShow()}>Login</button>
+      <button className="landingBtnLogin" onClick={() => handleShow()}>
+        Sign In
+      </button>
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Sign in</Modal.Title>
-        </Modal.Header>
-
+      <Modal className="modalShow lg-col-5" show={show} onHide={handleClose}>
         <form onSubmit={e => handleSubmit(e)}>
-          <Modal.Body>
-            <InputGroup className="mb-3">
+          <Modal.Body className="modal-body">
+            <Modal.Header closeButton style={{ border: "none" }}>
+              <Modal.Title className="title-sign">Sign In</Modal.Title>
+            </Modal.Header>
+
+            <InputGroup className="mb-3 inputan">
               <FormControl
                 placeholder="username"
                 aria-label="username"
@@ -106,12 +110,9 @@ function BtnLogin() {
                 onChange={e => handleChange(e)}
                 name="email"
               />
-              <InputGroup.Append>
-                <InputGroup.Text id="basic-addon2">@gmail.com</InputGroup.Text>
-              </InputGroup.Append>
             </InputGroup>
 
-            <InputGroup className="mb-3">
+            <InputGroup className="mb-3 inputan">
               <FormControl
                 placeholder="password"
                 aria-label="password"
@@ -121,17 +122,10 @@ function BtnLogin() {
                 name="password"
                 type="password"
               />
-              <InputGroup.Append>
-                <InputGroup.Text id="basic-addon2"></InputGroup.Text>
-              </InputGroup.Append>
             </InputGroup>
-          </Modal.Body>
 
-          <Modal.Footer>
-            <Button variant="primary" type="submit" onClick={handleClose}>
-              Login
-            </Button>
-          </Modal.Footer>
+            <button className="login-btn">Sign In</button>
+          </Modal.Body>
         </form>
       </Modal>
     </div>

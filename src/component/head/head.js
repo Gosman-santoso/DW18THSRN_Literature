@@ -1,13 +1,6 @@
 import React, { useContext } from "react";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  useParams,
-  useRouteMatch
-} from "react-router-dom";
+import { Link, useRouteMatch } from "react-router-dom";
 
 import { Context } from "../../context/context";
 
@@ -18,7 +11,7 @@ import "./head.css";
 
 const Head = () => {
   const [state, dispatch] = useContext(Context);
-  let { path, url } = useRouteMatch();
+  // let path = ["/profile", "/collection", "/addLiterature", "/"];
 
   return (
     <div className="box-header">

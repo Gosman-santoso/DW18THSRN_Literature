@@ -1,4 +1,4 @@
-$primary-color: rgb(41, 41, 41);
+$primary-color: #161616;
 $primary-text: white;
 $font: "Poppins";
 .box-profile {
@@ -9,29 +9,29 @@ $font: "Poppins";
     .profile-data {
         width: 80%;
         margin: auto;
+        margin-top: 48px;
         p,
         h5 {
             color: $primary-text;
             font-family: $font;
         }
         h1 {
-            font-size: 28px;
+            font-size: 36px;
             margin-bottom: 3vh;
             font-family: "Times New Roman", Times, serif;
             color: $primary-text;
         }
         .cover-profile {
             // background: salmon;
+            background: #252525;
             display: flex;
             justify-content: space-between;
             align-items: center;
             width: 100%;
             min-height: 43vh;
             padding: 3vh 0;
-            background: #292929;
             ul {
                 list-style: none;
-                margin: 0;
                 display: flex;
                 flex-direction: column;
                 // background: lightblue;
@@ -59,19 +59,13 @@ $font: "Poppins";
                 flex-direction: column;
                 width: 30vh;
                 min-height: 30vh;
+                margin-right: 5vh;
                 // background: lightgreen;
                 img {
                     width: 100%;
                     height: 30vh;
                     background: rgb(255, 255, 255);
                     border-radius: 8px;
-                }
-                input {
-                    width: 100%;
-                    margin-top: 2vh;
-                    border-radius: 5px;
-                    margin-bottom: 5px;
-                    border: none;
                 }
                 button {
                     padding: 8px 13px;
@@ -80,6 +74,7 @@ $font: "Poppins";
                     color: white;
                     border-radius: 5px;
                     width: 100%;
+                    margin-top: 10px;
                 }
             }
         }

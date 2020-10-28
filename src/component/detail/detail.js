@@ -1,16 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { API } from "../../config/api";
 import { Context } from "../../context/context";
-
-import { Link, useParams, useHistory } from "react-router-dom";
+import { API } from "../../config/api";
+import { useParams, Link } from "react-router-dom";
+import { AiOutlineCloudDownload } from "react-icons/ai";
 
 import "./detail.css";
+import Head from "../../component/head/head";
+import BtnBookmark from "../molekul/btn-bookmark/bookmark";
 
 function Detail() {
   // get Detail Book
   const { id } = useParams();
-  const history = useHistory();
 
   const [detailBook, setDetailBook] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -32,43 +33,82 @@ function Detail() {
     loadBooks();
   }, []);
 
+  // add library
+
+  const [state, dispatch] = useContext(Context);
+
+  const [formAdd, setFormAdd] = useState({
+    literatureId: id,
+    userId: state.user?.id
+  });
+
+  const [add, setAdd] = useState([]);
+
+  const { literatureId, userId } = formAdd;
+
+  const handleStore = async e => {
+    e.preventDefault();
+    try {
+      const config = {
+        headers: {
+          "Content-Type": "application/json"
+        }
+      };
+
+      const body = JSON.stringify({
+        literatureId,
+        userId
+      });
+
+      const res = await API.post("/libraries", body, config);
+
+      setAdd([...add, res.data.data.library]);
+      alert("Add to library");
+    } catch (err) {
+      console.log(err);
+      alert("Failed");
+    }
+  };
+
   return (
     <div className="box-detail">
+      <Head />
       <main>
-        <div className="cover-detail">
-          <img src={`${detailBook.thumbnail}`} alt="book" />
-          <div className="des-detail">
+        <div className="thumb">
+          <img src={require(`${detailBook.thumbnail}`)} alt="book" />
+        </div>
+        <form onSubmit={e => handleStore(e)}>
+          <BtnBookmark />
+        </form>
+        <ul>
+          <li>
             <h1>{detailBook.title}</h1>
             <p>{detailBook.user_id?.fullName}</p>
-            <ul>
-              <li>
-                <h2>Publication date</h2>
-                <p>{detailBook.publication_date}</p>
-              </li>
-              <li>
-                <h2>Pages</h2>
-                <p>{detailBook.pages}</p>
-              </li>
-              <li>
-                <h2>ISBN</h2>
-                <p>{detailBook.ISBN}</p>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="about">
-          <h1>About This Book</h1>
-          <p>{detailBook.aboutBook}</p>
+          </li>
 
-          <div className="boxBtn">
-            <button className="active" type="submit">
-              <a href="/somefile.txt" download>
-                Click to download
-              </a>
-              {/* <p>{detailBook.attache}</p> */}
-            </button>
-          </div>
-        </div>
+          <li>
+            <h5>Publication date</h5>
+            <p>{detailBook.publication_date}</p>
+          </li>
+          <li>
+            <h5>Pages</h5>
+
+            <p>{detailBook.pages}</p>
+          </li>
+          <li>
+            <h5 style={{ color: "#AF2E1C" }}>
+              <strong>ISBN</strong>
+            </h5>
+            <p>{detailBook.ISBN}</p>
+          </li>
+          <li>
+            <a href={`${detailBook.file}`} download>
+              <button className="active" type="submit">
+                Download <AiOutlineCloudDownload />
+              </button>
+            </a>
+          </li>
+        </ul>
       </main>
     </div>
   );

@@ -1,0 +1,57 @@
+/* global input form control */
+
+.modal-body {
+    background: #161616;
+    color: white;
+    padding: 7vh 5vh;
+}
+
+.form-control {
+    background: rgb(119, 119, 119);
+    color: white;
+    border: 2px solid rgba(228, 228, 228, 0.74);
+}
+
+.close {
+    color: white !important;
+    opacity: 0.8;
+}
+
+.form-control::placeholder {
+    color: rgb(180, 179, 179);
+}
+
+.modalShow {
+    margin-top: 20vh;
+}
+
+.modal-content {
+    width: 350px;
+    margin: auto;
+    align-self: center;
+}
+
+form .inputan {
+    border-radius: 5px;
+    border: none;
+    font-family: "Poppins";
+}
+
+form .title-sign {
+    font-weight: bold;
+}
+
+.box-login .landingBtnLogin,
+.login-btn {
+    border: none;
+    padding: 1.3vh 8vh;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+form .login-btn {
+    background: #AF2E1C;
+    width: 100%;
+    margin-top: 1.5vh;
+    color: white;
+}

@@ -1,7 +1,48 @@
+$primary-color: #161616;
+$primary-text: rgb(235, 235, 235);
+$secondari-text: #929292;
+$font: "Poppins";
+$font-h1: "Times New Roman";
 .box-detail {
-    width: 80%;
-    margin: auto;
-    .cover-detail {
+    width: 100%;
+    min-height: 100vh;
+    background: $primary-color;
+    main {
+        width: 80%;
+        margin: auto;
+        margin-top: 77px;
         display: flex;
+        position: relative;
+        .thumb {
+            width: 45vh;
+            img {
+                width: 100%;
+            }
+        }
+        ul {
+            list-style: none;
+            p,
+            h5,
+            h1 {
+                font-family: $font;
+                color: $primary-text;
+            }
+            p {
+                color: $secondari-text;
+            }
+            h1 {
+                font-family: $font-h1;
+            }
+            h5 {
+                font-weight: bold;
+            }
+        }
+        button {
+            color: white;
+            background: #af2e1c;
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+        }
     }
 }

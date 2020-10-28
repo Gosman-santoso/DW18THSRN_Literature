@@ -2,12 +2,13 @@
   background: #161616;
   width: 100%;
   height: 91vh;
-  padding-top: 6%;
 }
 
 .box-literature h1 {
   font-family: "Times New Roman";
   color: #ebebeb;
+  font-size: 36px;
+  margin-top: 48px;
 }
 
 .box-literature p {
@@ -37,19 +38,19 @@
 }
 
 .box-literature form ::-webkit-input-placeholder {
-  color: #cecece;
+  color: #f6f6f6;
 }
 
 .box-literature form :-ms-input-placeholder {
-  color: #cecece;
+  color: #f6f6f6;
 }
 
 .box-literature form ::-ms-input-placeholder {
-  color: #cecece;
+  color: #f6f6f6;
 }
 
 .box-literature form ::placeholder {
-  color: #cecece;
+  color: #f6f6f6;
 }
 
 .box-literature form button {

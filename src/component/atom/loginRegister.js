@@ -5,7 +5,13 @@ import BtnRegister from "./../molekul/register/btn-register";
 
 function BtnLoginRegister() {
   return (
-    <div style={{ display: "flex" }}>
+    <div
+      style={{
+        display: "flex",
+        width: "55vh",
+        justifyContent: "space-between"
+      }}
+    >
       <BtnRegister />
       <BtnLogin />
     </div>

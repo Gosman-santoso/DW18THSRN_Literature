@@ -1,16 +1,18 @@
 .box-collection {
-  background: #292929;
+  background: #161616;
   height: 100vh;
 }
 
 .box-collection .list-literature {
   width: 80%;
   margin: auto;
+  margin-top: 48px;
 }
 
 .box-collection .list-literature h1 {
   color: white;
   font-family: "Times New Roman", Times, serif;
+  font-size: 36px;
 }
 
 .box-collection .list-literature ul {

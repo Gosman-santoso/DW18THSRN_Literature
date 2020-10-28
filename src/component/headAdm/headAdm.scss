@@ -1,0 +1,16 @@
+.box-headerAdm {
+    background: #161616;
+    margin-top: 3vh;
+    main {
+        width: 80%;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        a {
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+        }
+    }
+}

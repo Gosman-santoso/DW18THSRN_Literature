@@ -3,7 +3,9 @@ import React, { useState, useEffect, useContext } from "react";
 import { API } from "../../config/api";
 import { Context } from "../../context/context";
 import { Link, useHistory } from "react-router-dom";
+
 import Head from "../../component/head/head";
+import SplashScreen from "../../component/atom/splash/splash";
 
 import "./collection.css";
 
@@ -50,16 +52,16 @@ function Collection() {
     <div className="box-collection">
       <Head />
       <div className="list-literature">
-        <h1>List Book</h1>
+        <h1>My Collection</h1>
         <ul>
           {loading || !literatureUser ? (
-            <p>Loading</p>
+            <SplashScreen />
           ) : (
             detail.map((detail, index) => (
               // {console.log(bookUser)}
 
               <Link
-                // onClick={() => history.push(`/detail/${bookUser.id}`)}
+                onClick={() => history.push(`/detail/${detail.id}`)}
                 style={{ textDecoration: "none", color: "black" }}
               >
                 <li>

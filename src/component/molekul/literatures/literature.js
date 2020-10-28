@@ -27,7 +27,7 @@ function ListLiterature() {
     loadBooks();
   }, []);
 
-  console.log(booksUser);
+  // console.log(booksUser);
 
   return (
     <div className="list-literature">

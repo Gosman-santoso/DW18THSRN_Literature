@@ -1,5 +1,6 @@
-$primary-color: rgb(41, 41, 41);
+$primary-color: #161616;
 $primary-text: white;
+$text-active: #af2e1c;
 $font: "Poppins",
 sans-serif;
 .box-header {
@@ -15,6 +16,13 @@ sans-serif;
             // margin-left: 5%;
             a {
                 color: $primary-text;
+                transition: 0.1s;
+            }
+            a:hover {
+                color: $text-active;
+            }
+            a.active {
+                color: $text-active;
             }
         }
         .logo-img {

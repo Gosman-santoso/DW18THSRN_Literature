@@ -19,6 +19,12 @@ const reducer = (state, action) => {
         loading: false
       };
 
+    case "UPLOAD_IMAGE":
+      return {
+        ...state,
+        user: action.payload
+      };
+
     case "AUTH_ERROR":
     case "LOGIN_FAIL":
       return {

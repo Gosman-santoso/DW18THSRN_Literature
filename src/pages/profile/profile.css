@@ -1,5 +1,5 @@
 .box-profile {
-  background-color: #292929;
+  background-color: #161616;
   width: 100%;
   min-height: 100vh;
   padding-bottom: 5%;
@@ -8,6 +8,7 @@
 .box-profile .profile-data {
   width: 80%;
   margin: auto;
+  margin-top: 48px;
 }
 
 .box-profile .profile-data p,
@@ -17,13 +18,14 @@
 }
 
 .box-profile .profile-data h1 {
-  font-size: 28px;
+  font-size: 36px;
   margin-bottom: 3vh;
   font-family: "Times New Roman", Times, serif;
   color: white;
 }
 
 .box-profile .profile-data .cover-profile {
+  background: #252525;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -36,12 +38,10 @@
   width: 100%;
   min-height: 43vh;
   padding: 3vh 0;
-  background: #292929;
 }
 
 .box-profile .profile-data .cover-profile ul {
   list-style: none;
-  margin: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -88,6 +88,7 @@
           flex-direction: column;
   width: 30vh;
   min-height: 30vh;
+  margin-right: 5vh;
 }
 
 .box-profile .profile-data .cover-profile .box-gambar img {
@@ -97,14 +98,6 @@
   border-radius: 8px;
 }
 
-.box-profile .profile-data .cover-profile .box-gambar input {
-  width: 100%;
-  margin-top: 2vh;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  border: none;
-}
-
 .box-profile .profile-data .cover-profile .box-gambar button {
   padding: 8px 13px;
   background: #ee4622;
@@ -112,5 +105,6 @@
   color: white;
   border-radius: 5px;
   width: 100%;
+  margin-top: 10px;
 }
 /*# sourceMappingURL=profile.css.map */

@@ -1,5 +1,5 @@
 .box-header {
-  background-color: #292929;
+  background-color: #161616;
   font-family: "Poppins", sans-serif;
 }
 
@@ -19,5 +19,15 @@
 
 .box-header nav ul a {
   color: white;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+.box-header nav ul a:hover {
+  color: #af2e1c;
+}
+
+.box-header nav ul a.active {
+  color: #af2e1c;
 }
 /*# sourceMappingURL=head.css.map */
