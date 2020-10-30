@@ -32,9 +32,18 @@
 }
 
 form .inputan {
-    border-radius: 5px;
-    border: none;
     font-family: "Poppins";
+    width: 100%;
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 2px solid #b4b4b4;
+    border-radius: 5px;
+    color: white;
+    background: #525252;
+}
+
+.inputan::placeholder {
+    color: rgb(172, 172, 172);
 }
 
 form .title-sign {
@@ -50,7 +59,7 @@ form .title-sign {
 }
 
 form .login-btn {
-    background: #AF2E1C;
+    background: #af2e1c;
     width: 100%;
     margin-top: 1.5vh;
     color: white;

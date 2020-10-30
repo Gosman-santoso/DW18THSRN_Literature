@@ -1,7 +1,8 @@
 .box-literature {
   background: #161616;
   width: 100%;
-  height: 91vh;
+  min-height: 100vh;
+  padding-bottom: 5vh;
 }
 
 .box-literature h1 {
@@ -38,19 +39,19 @@
 }
 
 .box-literature form ::-webkit-input-placeholder {
-  color: #f6f6f6;
+  color: #acacac;
 }
 
 .box-literature form :-ms-input-placeholder {
-  color: #f6f6f6;
+  color: #acacac;
 }
 
 .box-literature form ::-ms-input-placeholder {
-  color: #f6f6f6;
+  color: #acacac;
 }
 
 .box-literature form ::placeholder {
-  color: #f6f6f6;
+  color: #acacac;
 }
 
 .box-literature form button {
@@ -61,5 +62,18 @@
   border: none;
   border-radius: 5px;
   color: white;
+}
+
+.box-literature form .attach-file label,
+.box-literature form .attach-thumbnail label {
+  color: white;
+  padding: 6px 12px;
+  border: 2px solid #b4b4b4;
+  border-radius: 5px;
+  cursor: pointer;
+  background: #525252;
+  width: 30vh;
+  margin: 1.5vh 0;
+  overflow: hidden;
 }
 /*# sourceMappingURL=add.css.map */

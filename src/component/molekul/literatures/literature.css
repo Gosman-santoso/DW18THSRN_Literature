@@ -1,6 +1,8 @@
 .list-literature {
   width: 80%;
   margin: auto;
+  background: #252525;
+  border-radius: 5px;
 }
 
 .list-literature h1 {

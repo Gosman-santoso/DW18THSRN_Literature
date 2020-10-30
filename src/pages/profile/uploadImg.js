@@ -29,27 +29,27 @@ const UploadImage = props => {
         payload: res.data.data.user
       });
       props.refetch();
-    } catch (error) {
-      console.log(error.message);
+    } catch (err) {
+      console.log(err.message);
     }
   });
 
   const fileData = () => {
-    if (image)
-      return (
-        <h5>
-          {" "}
-          <em> {image.name} </em>{" "}
-        </h5>
-      );
+    if (image) return <h5>{image.name}</h5>;
 
     return null;
   };
 
   return (
-    <Container>
+    <Container style={{ padding: "3vh" }}>
+      <Col
+        lg={6}
+        className=" d-flex justify-content-center align-items-center flex-column"
+      >
+        <img height="150" width="150" src={preview} alt="" />
+      </Col>
       <Row>
-        <Col lg={8} className="d-flex justify-content-center flex-column">
+        <Col md={12} className="d-flex justify-content-center flex-column">
           <Form
             onSubmit={e => {
               e.preventDefault();
@@ -83,12 +83,6 @@ const UploadImage = props => {
             </Button>
           </Form>
           <small>{success}</small>
-        </Col>
-        <Col
-          lg={4}
-          className=" d-flex justify-content-center align-items-center flex-column"
-        >
-          <img height="150" width="150" src={preview} alt="" />
         </Col>
       </Row>
     </Container>

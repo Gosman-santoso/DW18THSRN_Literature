@@ -2,211 +2,199 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { Context } from "../../context/context";
 import { API } from "../../config/api";
-import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useFormik } from "formik";
 import { useMutation } from "react-query";
+import { MdAttachFile } from "react-icons/md";
+import { Alert } from "react-bootstrap";
 
-// import Succses from "./../../../Components/modalSuccses";
 import Head from "../../component/head/head";
+import AlertModal from "../../component/atom/alert/alertModal";
 
 import "./add.css";
 
-function AddBook() {
-  // multer upload
-
-  // get user id
+function AddLiterature() {
   const [state] = useContext(Context);
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [setWhen] = useState("");
 
-  // add book
-  const [formAdd, setFormAdd] = useState({
-    title: "",
-    publication_date: "",
-    userId: `${state.user?.id}`,
-    pages: "",
-    ISBN: "",
-    author: "",
-    status: "Waiting",
-    file: "",
-    thumbnail: ""
-  });
-
-  // menampung file formAdd
-  const [book, setBook] = useState([]);
+  const SUPPORTED_FORMATS_IMAGE = ["image/jpg", "image/jpeg", "image/png"];
+  const SUPPORTED_FORMATS_FILE = ["application/pdf"];
 
   const {
-    title,
-    publication_date,
-    userId,
-    pages,
-    ISBN,
-    author,
-    status,
-    file,
-    thumbnail
-  } = formAdd;
+    handleSubmit,
+    getFieldProps,
+    errors,
+    touched,
+    values,
+    resetForm,
+    setFieldValue
+  } = useFormik({
+    initialValues: {
+      userId: state.user.id,
+      title: "",
+      publication_date: "",
+      pages: "",
+      ISBN: "",
+      author: "",
+      file: "",
+      thumbnail: "",
+      status: "Waiting to be verified"
+    },
+    validationSchema: Yup.object({
+      title: Yup.string()
+        .required()
+        .min(3),
+      publication_date: Yup.string().required(),
+      pages: Yup.number().required(),
+      ISBN: Yup.string()
+        .matches(/^[0-9]+$/, "ISBN only accepts input numbers from 0-9")
+        .required()
+        .min(8),
+      author: Yup.string().required(),
+      thumbnail: Yup.mixed()
+        .required()
+        .test(
+          "fileFormat",
+          "Sorry only accept image filetype",
+          value => value && SUPPORTED_FORMATS_IMAGE.includes(value.type)
+        ),
+      file: Yup.mixed()
+        .required()
+        .test(
+          "fileFormat",
+          "Sorry only accept epub/pdf filetype",
+          value => value && SUPPORTED_FORMATS_FILE.includes(value.type)
+        )
+    }),
+    onSubmit: values => {
+      console.log(values);
 
-  // useEffect(() => {
-  //   console.log(formAdd);
-  // }, [formAdd]);
+      storeLiterature(values);
+      resetForm({ values: "" });
+    }
+  });
 
-  const handleChange = e => {
-    setFormAdd({ ...formAdd, [e.target.name]: e.target.value });
-  };
-
-  const handleStore = async e => {
-    e.preventDefault();
+  const [storeLiterature, { isLoading, error }] = useMutation(async values => {
     try {
       const config = {
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "multipart/form-data"
         }
       };
+      const formData = new FormData();
+      formData.append("userId", values.userId);
+      formData.append("title", values.title);
+      formData.append("publication_date", values.publication_date);
+      formData.append("pages", values.pages);
+      formData.append("ISBN", values.ISBN);
+      formData.append("author", values.author);
+      formData.append("file", values.file);
+      formData.append("thumbnail", values.thumbnail);
+      formData.append("status", values.status);
 
-      const body = JSON.stringify({
-        title,
-        publication_date,
-        userId,
-        pages,
-        ISBN,
-        author,
-        status,
-        file,
-        thumbnail
-      });
-
-      const res = await API.post("/literatures", body, config);
-
-      setBook([...book, res.data.data.Literature]);
-      alert(
-        "Thank you for adding Literature. Please wait 1 x 24 hours to verify"
-      );
+      const res = await API.post("/literatures", formData, config);
+      setShowAlert(true);
     } catch (err) {
-      console.log(err);
-      alert("Failed");
+      console.log(err.response.data.message);
+      setErrorMsg(err.response.data.message);
     }
-  };
+  });
 
   return (
     <div>
       <Head />
       <div className="box-literature">
-        <form onSubmit={e => handleStore(e)}>
+        {errorMsg ? <Alert variant="danger">{errorMsg || error}</Alert> : null}
+        <form onSubmit={handleSubmit}>
           <h1> Add Literature </h1>
           <input
-            onChange={e => handleChange(e)}
-            value={title}
             name="title"
             type="text"
             placeholder="Title"
+            {...getFieldProps("title")}
           />
+          {touched.title && errors.title ? (
+            <p style={{ color: "red" }}>{errors.title}</p>
+          ) : null}
           <input
-            onChange={e => handleChange(e)}
-            value={publication_date}
             name="publication_date"
             type="date"
             placeholder="Publication date"
+            {...getFieldProps("publication_date")}
           />
           <input
-            onChange={e => handleChange(e)}
-            value={pages}
             name="pages"
             type="number"
             placeholder="Pages"
+            {...getFieldProps("pages")}
           />
           <input
-            onChange={e => handleChange(e)}
-            value={ISBN}
             name="ISBN"
             type="number"
             placeholder="ISBN"
+            {...getFieldProps("ISBN")}
           />
           <input
-            onChange={e => handleChange(e)}
-            value={author}
             name="author"
             type="text"
             placeholder="Author"
+            {...getFieldProps("author")}
           />
-          <input
-            onChange={e => handleChange(e)}
-            value={thumbnail}
-            name="thumbnail"
-            type="text"
-            placeholder="Thumbnail"
-          />
-          <input
-            onChange={e => handleChange(e)}
-            value={file}
-            name="file"
-            type="text"
-            placeholder="File"
-          />
+
+          <div className="attach-thumbnail">
+            <input
+              type="file"
+              placeholder="Thumbnail"
+              onChange={e => {
+                setFieldValue("thumbnail", e.target.files[0]);
+              }}
+              id="thumbnail"
+              style={{ display: "none" }}
+            />
+            <label for="thumbnail">
+              {values.thumbnail.name
+                ? values.thumbnail.name
+                : "Attache thumbnail"}
+              <MdAttachFile />
+            </label>
+            <span className="help-block text-danger">
+              {touched.thumbnail ? errors.thumbnail : ""}
+            </span>
+          </div>
+
+          <div className="attach-file">
+            <input
+              type="file"
+              placeholder="File"
+              onChange={e => {
+                setFieldValue("file", e.target.files[0]);
+              }}
+              id="file"
+              style={{ display: "none" }}
+            />
+            <label for="file">
+              {values.file.name ? values.file.name : "Attache file pdf"}
+              <MdAttachFile style={{ color: "white" }} />
+            </label>
+            <span className="help-block text-danger">
+              {touched.file ? errors.file : ""}
+            </span>
+          </div>
           <button type="submit"> Add Literature </button>
         </form>
+        <AlertModal show={showAlert} onHide={() => setShowAlert(false)}>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <p>
+              Your literature succsesfully created, please wait 1x24 hour to
+              verify
+            </p>
+          </div>
+        </AlertModal>
       </div>
     </div>
   );
 }
 
-export default AddBook;
-
-// return (
-//     <div>
-//       <Head />
-//       <div className="box-literature">
-//         <form onSubmit={e => handleStore(e)}>
-//           <h1> Add Literature </h1>
-//           <input
-//             onChange={e => handleChange(e)}
-//             value={title}
-//             name="title"
-//             type="text"
-//             placeholder="Title"
-//           />
-//           <input
-//             onChange={e => handleChange(e)}
-//             value={publication_date}
-//             name="publication_date"
-//             type="date"
-//             placeholder="Publication date"
-//           />
-//           <input
-//             onChange={e => handleChange(e)}
-//             value={pages}
-//             name="pages"
-//             type="number"
-//             placeholder="Pages"
-//           />
-//           <input
-//             onChange={e => handleChange(e)}
-//             value={ISBN}
-//             name="ISBN"
-//             type="number"
-//             placeholder="ISBN"
-//           />
-//           <input
-//             onChange={e => handleChange(e)}
-//             value={author}
-//             name="author"
-//             type="text"
-//             placeholder="Author"
-//           />
-//           <input
-//             onChange={e => handleChange(e)}
-//             value={thumbnail}
-//             name="thumbnail"
-//             type="text"
-//             placeholder="Thumbnail"
-//           />
-//           <input
-//             onChange={e => handleChange(e)}
-//             value={file}
-//             name="file"
-//             type="text"
-//             placeholder="File"
-//           />
-//           <button type="submit"> Add Literature </button>
-//         </form>
-//       </div>
-//     </div>
-//   );
+export default AddLiterature;

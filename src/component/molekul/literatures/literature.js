@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 
-import { API } from "../../../config/api";
+import { API, urlAsset } from "../../../config/api";
 import { Link, useHistory } from "react-router-dom";
+import SplashScreen from "../../../component/atom/splash/splash";
 
 import "./literature.css";
 
@@ -27,24 +28,22 @@ function ListLiterature() {
     loadBooks();
   }, []);
 
-  // console.log(booksUser);
-
   return (
     <div className="list-literature">
       <h1>List</h1>
       <ul>
         {loading || !booksUser ? (
-          <h1> Loading... </h1>
+          <SplashScreen />
         ) : (
-          booksUser.map((book, index) => (
+          booksUser.map(literature => (
             <Link
-              onClick={() => history.push(`/detail/${book.id}`)}
+              onClick={() => history.push(`/detail/${literature.id}`)}
               style={{ textDecoration: "none", color: "black" }}
             >
               <li>
-                <img src={`${book.thumbnail}`} alt="book" />
-                <h5> {book.title} </h5>
-                <p> {book.author} </p>
+                <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
+                <h5> {literature.title} </h5>
+                <p> {literature.author} </p>
               </li>
             </Link>
           ))

@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 
 import { Context } from "../../context/context";
-import { API } from "../../config/api";
+import { API, urlAsset } from "../../config/api";
 import { useParams } from "react-router-dom";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 
@@ -75,7 +75,7 @@ function Detail() {
       <Head />
       <main>
         <div className="thumb">
-          <img src={detailBook.thumbnail} alt="book" />
+          <img src={urlAsset.thumbnail + detailBook.thumbnail} alt="book" />
         </div>
         <form onSubmit={e => handleStore(e)}>
           <BtnBookmark />
@@ -102,7 +102,7 @@ function Detail() {
             <p>{detailBook.ISBN}</p>
           </li>
           <li>
-            <a href={`${detailBook.file}`} download>
+            <a href={urlAsset.file + detailBook.file} download>
               <button className="active" type="submit">
                 Download <AiOutlineCloudDownload />
               </button>

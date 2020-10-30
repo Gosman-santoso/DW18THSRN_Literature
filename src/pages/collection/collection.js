@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 
-import { API } from "../../config/api";
+import { API, urlAsset } from "../../config/api";
 import { Context } from "../../context/context";
 import { Link, useHistory } from "react-router-dom";
 import { ImCancelCircle } from "react-icons/im";
@@ -73,9 +73,13 @@ function Collection() {
                 >
                   <li>
                     <div>
-                      <img
+                      {/* <img
                         src={detail.literature?.thumbnail}
                         alt="literature"
+                      /> */}
+                      <img
+                        src={urlAsset.thumbnail + detail.literature?.thumbnail}
+                        alt=""
                       />
                       <h5>{detail.literature?.title}</h5>
                       <p>{detail.literature?.author}</p>

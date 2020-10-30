@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { API } from "../../config/api";
+import { API, urlAsset } from "../../config/api";
 import { Context } from "../../context/context";
 import { Link, useHistory } from "react-router-dom";
 
@@ -43,22 +43,23 @@ function MyLiterature() {
         ) : (
           literature.map(literature =>
             literature.status == "Approved" ? (
-              <Link onClick={() => history.push(`/detail/${literature.id}`)}>
+              <Link
+                onClick={() => history.push(`/detail/${literature.id}`)}
+                style={{ textDecoration: "none" }}
+              >
                 <li>
-                  <div style={{ marginTop: "5px" }}>
-                    <img src={literature.thumbnail} alt="" />
-                    <h5>{literature.title}</h5>
-                    <p>{literature.author}</p>
-                  </div>
+                  <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
+                  <h5>{literature.title}</h5>
+                  <p>{literature.author}</p>
                 </li>
               </Link>
             ) : (
-              <li>
-                <img src={literature.thumbnail} alt="" />
+              <li style={{ position: "relative", display: "block" }}>
+                <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
                 <h5>{literature.title}</h5>
                 <p>{literature.author}</p>
                 <div className="overlay">
-                  <h5>Waiting to be approved</h5>
+                  <h3>Waiting to be approved</h3>
                 </div>
               </li>
             )

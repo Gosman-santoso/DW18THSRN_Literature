@@ -23,10 +23,6 @@ function BtnLogin() {
 
   const { email, password } = formData;
 
-  // useEffect(() => {
-  //   console.log(formData);
-  // }, [formData]);
-
   const handleChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -101,28 +97,23 @@ function BtnLogin() {
               <Modal.Title className="title-sign">Sign In</Modal.Title>
             </Modal.Header>
 
-            <InputGroup className="mb-3 inputan">
-              <FormControl
-                placeholder="username"
-                aria-label="username"
-                aria-describedby="basic-addon2"
-                value={email}
-                onChange={e => handleChange(e)}
-                name="email"
-              />
-            </InputGroup>
+            <input
+              className="inputan"
+              placeholder="username"
+              value={email}
+              onChange={e => handleChange(e)}
+              name="email"
+              type="email"
+            />
 
-            <InputGroup className="mb-3 inputan">
-              <FormControl
-                placeholder="password"
-                aria-label="password"
-                aria-describedby="basic-addon2"
-                value={password}
-                onChange={e => handleChange(e)}
-                name="password"
-                type="password"
-              />
-            </InputGroup>
+            <input
+              className="inputan"
+              placeholder="password"
+              value={password}
+              onChange={e => handleChange(e)}
+              name="password"
+              type="password"
+            />
 
             <button className="login-btn">Sign In</button>
           </Modal.Body>

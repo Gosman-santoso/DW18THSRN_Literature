@@ -15,5 +15,8 @@ export const setAuthToken = token => {
 
 export const urlAsset = {
     img: "http://localhost:5000/uploads/img/",
-    pdf: "http://localhost:5000/uploads/pdf/"
+    pdf: "http://localhost:5000/uploads/pdf/",
+
+    file: "http://localhost:5000/public/files/",
+    thumbnail: "http://localhost:5000/public/thumbnails/"
 };

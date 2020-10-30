@@ -28,10 +28,14 @@
   overflow: hidden;
   -webkit-transition: 0.1s;
   transition: 0.1s;
+  width: 30vh;
 }
 
 .list-book ul li img {
-  width: 30vh;
+  width: 100%;
+  height: 40vh;
+  background: #e0e0e0;
+  border-radius: 5px;
 }
 
 .list-book ul li p,
@@ -62,9 +66,12 @@
           align-items: center;
 }
 
-.list-book ul .overlay h5 {
+.list-book ul .overlay h3 {
   display: inline-block;
   color: #333333;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .list-book div:hover {

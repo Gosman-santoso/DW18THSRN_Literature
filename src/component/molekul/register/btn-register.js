@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 
-import { API } from "../../../config/api";
+import { API, urlAsset } from "../../../config/api";
 import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
 
 import "./btn-regist.css";
@@ -17,16 +17,13 @@ function BtnRegister() {
     fullName: "",
     gender: "",
     phone: "",
-    address: ""
+    address: "",
+    avatar: `${urlAsset.img}profile-default.jpg`
   });
 
   const [book, setBook] = useState([]);
 
-  const { email, password, fullName, gender, phone, address } = formAdd;
-
-  // useEffect(() => {
-  //   console.log(formAdd);
-  // }, [formAdd]);
+  const { email, password, fullName, gender, phone, address, avatar } = formAdd;
 
   const handleChange = e => {
     setFormAdd({ ...formAdd, [e.target.name]: e.target.value });
@@ -76,77 +73,61 @@ function BtnRegister() {
             <Modal.Header closeButton style={{ border: "none" }}>
               <Modal.Title className="title-sign">Sign Up</Modal.Title>
             </Modal.Header>
-
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="email"
-                aria-label="email"
-                aria-describedby="basic-addon2"
-                value={email}
-                name="email"
-                type="email"
-                onChange={e => handleChange(e)}
-              />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="password"
-                aria-label="password"
-                aria-describedby="basic-addon2"
-                value={password}
-                name="password"
-                type="password"
-                onChange={e => handleChange(e)}
-              />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Full Name"
-                aria-label="Full Name"
-                aria-describedby="basic-addon2"
-                name="fullName"
-                value={fullName}
-                onChange={e => handleChange(e)}
-              />
-            </InputGroup>
-
+            <input
+              className="inputan"
+              placeholder="username"
+              value={email}
+              onChange={e => handleChange(e)}
+              name="email"
+              type="email"
+            />
+            <input
+              className="inputan"
+              placeholder="password"
+              value={password}
+              onChange={e => handleChange(e)}
+              name="password"
+              type="password"
+            />
+            <input
+              className="inputan"
+              placeholder="Full Name"
+              value={password}
+              onChange={e => handleChange(e)}
+              name="fullName"
+              type="fullName"
+            />
             <select
-              className="custom-select mb-3 form-control"
+              className="inputan"
+              style={{ color: "rgb(172, 172, 172)" }}
               value={gender}
               onChange={e => {
                 setFormAdd({ ...formAdd, gender: e.target.value });
               }}
             >
-              <option value="" disable selected hidden>
-                Gender
+              <option className="inputan" value="male">
+                Man
               </option>
-              <option value="male">Man</option>
-              <option value="female">Woman</option>
+              <option className="inputan" value="female">
+                Woman
+              </option>
             </select>
-
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Phone"
-                aria-label="Phone"
-                aria-describedby="basic-addon2"
-                name="phone"
-                value={phone}
-                onChange={e => handleChange(e)}
-              />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <FormControl
-                placeholder="Address"
-                aria-label="Address"
-                aria-describedby="basic-addon2"
-                name="address"
-                value={address}
-                onChange={e => handleChange(e)}
-              />
-            </InputGroup>
+            <input
+              className="inputan"
+              placeholder="Phone"
+              value={password}
+              onChange={e => handleChange(e)}
+              name="phone"
+              type="phone"
+            />
+            <input
+              className="inputan"
+              placeholder="Address"
+              value={password}
+              onChange={e => handleChange(e)}
+              name="address"
+              type="address"
+            />
             <button
               className="register-btn"
               type="submit"
