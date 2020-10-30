@@ -92,7 +92,7 @@ function BtnRegister() {
             <input
               className="inputan"
               placeholder="Full Name"
-              value={password}
+              value={fullName}
               onChange={e => handleChange(e)}
               name="fullName"
               type="fullName"
@@ -115,7 +115,7 @@ function BtnRegister() {
             <input
               className="inputan"
               placeholder="Phone"
-              value={password}
+              value={phone}
               onChange={e => handleChange(e)}
               name="phone"
               type="phone"
@@ -123,7 +123,7 @@ function BtnRegister() {
             <input
               className="inputan"
               placeholder="Address"
-              value={password}
+              value={address}
               onChange={e => handleChange(e)}
               name="address"
               type="address"

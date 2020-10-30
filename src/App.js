@@ -10,7 +10,7 @@ import Main from "./pages/main/main";
 import Profile from "./pages/profile/profile";
 import Collection from "./pages/collection/collection";
 import AddLiterature from "./pages/literature/addLiterature";
-import Search from "./pages/search/search";
+import SearchResult from "./component/molekul/search-result/searchResult";
 import Detail from "./component/detail/detail";
 
 import AdmMain from "./pages/mainAdm/mainAdm";
@@ -51,7 +51,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Landing} />
         <PrivateRoute path="/main" exact component={Main} />
-        <PrivateRoute path="/main/:title" exact component={Search} />
+        <PrivateRoute path="/search" exact component={SearchResult} />
         <PrivateRoute path="/profile" exact component={Profile} />
         <PrivateRoute path="/collection" exact component={Collection} />
         <PrivateRoute path="/addLiterature" exact component={AddLiterature} />

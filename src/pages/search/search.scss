@@ -11,22 +11,9 @@ $font: "Poppins";
         margin: auto;
         margin-top: 5vh;
         color: $primary-text;
-        display: flex;
         .list-btn-search {
             width: 600px;
-            .iniFlex {
-                display: flex;
-                margin-top: 5vh;
-            }
-        }
-        .box-list-search {
-            ul {
-                list-style: none;
-                display: flex;
-                li {
-                    margin-right: 8vh;
-                }
-            }
+            margin-bottom: 5vh;
         }
     }
 }

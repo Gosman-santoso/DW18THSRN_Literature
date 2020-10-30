@@ -85,7 +85,14 @@ function BtnLogin() {
   };
 
   return (
-    <div className="box-login">
+    <div
+      className="box-login-landing"
+      style={{
+        color: "black",
+        background: "white !important",
+        borderRadius: "5px"
+      }}
+    >
       <button className="landingBtnLogin" onClick={() => handleShow()}>
         Sign In
       </button>

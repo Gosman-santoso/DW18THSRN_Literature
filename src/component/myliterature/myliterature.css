@@ -29,6 +29,7 @@
   -webkit-transition: 0.1s;
   transition: 0.1s;
   width: 30vh;
+  cursor: pointer;
 }
 
 .list-book ul li img {

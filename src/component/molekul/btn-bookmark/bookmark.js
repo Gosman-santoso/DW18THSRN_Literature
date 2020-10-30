@@ -6,7 +6,11 @@ import "./bookmark.css";
 function BtnBookmark() {
   return (
     <div className="btn-bookmark">
-      <button className="bookmark active" type="submit">
+      <button
+        className="bookmark active"
+        type="submit"
+        style={{ position: "absolute", right: "0" }}
+      >
         Add My Collection <FaRegBookmark />
       </button>
     </div>

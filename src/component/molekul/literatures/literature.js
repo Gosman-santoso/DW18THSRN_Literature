@@ -36,16 +36,11 @@ function ListLiterature() {
           <SplashScreen />
         ) : (
           booksUser.map(literature => (
-            <Link
-              onClick={() => history.push(`/detail/${literature.id}`)}
-              style={{ textDecoration: "none", color: "black" }}
-            >
-              <li>
-                <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
-                <h5> {literature.title} </h5>
-                <p> {literature.author} </p>
-              </li>
-            </Link>
+            <li onClick={() => history.push(`/detail/${literature.id}`)}>
+              <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
+              <h5> {literature.title} </h5>
+              <p> {literature.author} </p>
+            </li>
           ))
         )}
       </ul>

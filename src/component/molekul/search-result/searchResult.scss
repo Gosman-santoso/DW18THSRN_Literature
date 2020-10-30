@@ -1,0 +1,23 @@
+$primary-color: #161616;
+$primary-text: white;
+$font: "Poppins";
+.box-search-result {
+    width: 100%;
+    background: $primary-color;
+    .box-list-search {
+        width: 80%;
+        margin: auto;
+        min-height: 100vh;
+        padding-bottom: 5vh;
+    }
+    .box-select-literature {
+        margin-top: 5vh;
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        .box-list-literature {
+            display: flex;
+            width: 90%;
+        }
+    }
+}

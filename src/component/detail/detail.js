@@ -4,6 +4,7 @@ import { Context } from "../../context/context";
 import { API, urlAsset } from "../../config/api";
 import { useParams } from "react-router-dom";
 import { AiOutlineCloudDownload } from "react-icons/ai";
+import { FaRegBookmark } from "react-icons/fa";
 
 import "./detail.css";
 import Head from "../../component/head/head";
@@ -12,12 +13,16 @@ import BtnBookmark from "../molekul/btn-bookmark/bookmark";
 function Detail() {
   // get Detail Book
   const { id } = useParams();
+  const [state] = useState(Context);
 
   const [detailBook, setDetailBook] = useState([]);
+  const [collection, setCollection] = useState("");
   const [loading, setLoading] = useState(true);
 
+  // get literature
+
   useEffect(() => {
-    const loadBooks = async () => {
+    const loadLiterature = async () => {
       try {
         setLoading(true);
 
@@ -30,12 +35,10 @@ function Detail() {
         console.log(err);
       }
     };
-    loadBooks();
+    loadLiterature();
   }, []);
 
   // add library
-
-  const [state, dispatch] = useContext(Context);
 
   const [formAdd, setFormAdd] = useState({
     literatureId: id,
@@ -78,7 +81,13 @@ function Detail() {
           <img src={urlAsset.thumbnail + detailBook.thumbnail} alt="book" />
         </div>
         <form onSubmit={e => handleStore(e)}>
-          <BtnBookmark />
+          <button
+            className="bookmark active"
+            type="submit"
+            style={{ position: "absolute", right: "0" }}
+          >
+            Add My Collection <FaRegBookmark />
+          </button>
         </form>
         <ul>
           <li>

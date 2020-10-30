@@ -36,6 +36,7 @@
   -webkit-transition: 0.1s;
   transition: 0.1s;
   width: 30vh;
+  cursor: pointer;
 }
 
 .box-collection .my-collection ul li img {

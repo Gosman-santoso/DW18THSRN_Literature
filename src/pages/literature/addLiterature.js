@@ -40,7 +40,7 @@ function AddLiterature() {
       author: "",
       file: "",
       thumbnail: "",
-      status: "Waiting to be verified"
+      status: "Waiting"
     },
     validationSchema: Yup.object({
       title: Yup.string()

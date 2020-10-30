@@ -65,27 +65,20 @@ function Collection() {
           ) : (
             Collection.map(detail => (
               <div>
-                <Link
+                <li
                   onClick={() =>
                     history.push(`/detail/${detail.literature?.id}`)
                   }
-                  style={{ textDecoration: "none", color: "black" }}
                 >
-                  <li>
-                    <div>
-                      {/* <img
-                        src={detail.literature?.thumbnail}
-                        alt="literature"
-                      /> */}
-                      <img
-                        src={urlAsset.thumbnail + detail.literature?.thumbnail}
-                        alt=""
-                      />
-                      <h5>{detail.literature?.title}</h5>
-                      <p>{detail.literature?.author}</p>
-                    </div>
-                  </li>
-                </Link>
+                  <div>
+                    <img
+                      src={urlAsset.thumbnail + detail.literature?.thumbnail}
+                      alt=""
+                    />
+                    <h5>{detail.literature?.title}</h5>
+                    <p>{detail.literature?.author}</p>
+                  </div>
+                </li>
 
                 {/* <form onSubmit={e => handleRemove(e)}>
                   <input type="text" name="removeLibraryId" value={detail.id} />

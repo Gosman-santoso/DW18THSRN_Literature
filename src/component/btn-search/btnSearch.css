@@ -1,0 +1,13 @@
+.box-btn-search input {
+    margin: 10px 0;
+    padding: 5px 10px;
+    border: 2px solid #b4b4b4;
+    border-radius: 5px;
+    color: white;
+    background: #525252;
+    width: 80vh;
+}
+
+input::placeholder {
+    color: rgb(172, 172, 172);
+}

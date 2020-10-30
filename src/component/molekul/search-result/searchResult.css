@@ -1,0 +1,30 @@
+.box-search-result {
+  width: 100%;
+  background: #161616;
+}
+
+.box-search-result .box-list-search {
+  width: 80%;
+  margin: auto;
+  min-height: 100vh;
+  padding-bottom: 5vh;
+}
+
+.box-search-result .box-select-literature {
+  margin-top: 5vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.box-search-result .box-select-literature .box-list-literature {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 90%;
+}
+/*# sourceMappingURL=searchResult.css.map */

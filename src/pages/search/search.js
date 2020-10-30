@@ -17,11 +17,10 @@ function Search() {
       <main>
         <div className="list-btn-search">
           <BtnSearch />
-          <div className="iniFlex">
-            <BtnCategory />
-            <ListSearch className="iniList" />
-          </div>
         </div>
+
+        <BtnCategory />
+        <ListSearch className="iniList" />
       </main>
     </div>
   );
