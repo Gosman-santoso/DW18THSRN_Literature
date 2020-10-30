@@ -3,8 +3,9 @@ $primary-text: white;
 $font: "Poppins";
 .box-collection {
     background: $primary-color;
-    height: 100vh;
-    .list-literature {
+    min-height: 100vh;
+    padding-bottom: 5vh;
+    .my-collection {
         width: 80%;
         margin: auto;
         margin-top: 48px;
@@ -14,7 +15,33 @@ $font: "Poppins";
             font-size: 36px;
         }
         ul {
+            display: flex;
+            flex-wrap: wrap;
             list-style: none;
+            padding: 0;
+            width: 100%;
+            li {
+                align-self: flex-start;
+                margin: 3vh 5vh;
+                border-radius: 8px;
+                overflow: hidden;
+                transition: 0.1s;
+                width: 30vh;
+                img {
+                    width: 100%;
+                    height: 40vh;
+                    background: rgb(224, 224, 224);
+                    border-radius: 5px;
+                }
+                p,
+                h5 {
+                    color: $primary-text;
+                    margin: 5px;
+                }
+            }
+            li:hover {
+                opacity: 0.6;
+            }
         }
     }
 }

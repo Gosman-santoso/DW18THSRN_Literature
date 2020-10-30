@@ -42,11 +42,9 @@ function ListLiterature() {
               style={{ textDecoration: "none", color: "black" }}
             >
               <li>
-                <div>
-                  <img src={`${book.thumbnail}`} alt="book" />
-                  <h5> {book.title} </h5>
-                  <p> {book.author} </p>
-                </div>
+                <img src={`${book.thumbnail}`} alt="book" />
+                <h5> {book.title} </h5>
+                <p> {book.author} </p>
               </li>
             </Link>
           ))

@@ -2,28 +2,36 @@ $primary-color: rgb(41, 41, 41);
 $primary-text: white;
 $font: "Poppins";
 .list-literature {
-    width: 73%;
+    width: 80%;
     margin: auto;
-    p,
-    h5 {
-        color: $primary-text;
-        font-family: $font;
-    }
     h1 {
-        margin-top: 5vh;
-        font-family: "Times New Roman", Times, serif !important;
+        margin-top: 10vh;
+        margin-left: 5vh;
         color: $primary-text;
     }
     ul {
-        width: 100%;
-        margin: auto;
-        background: #252525;
-        padding: 0 !important;
         display: flex;
         flex-wrap: wrap;
         list-style: none;
-        justify-content: space-between;
-        padding: 3vh !important;
-        box-sizing: border-box;
+        padding: 0;
+        width: 100%;
+        li {
+            align-self: flex-start;
+            margin: 3vh 5vh;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: 0.1s;
+            img {
+                width: 30vh;
+            }
+            p,
+            h5 {
+                color: $primary-text;
+                margin: 5px;
+            }
+        }
+        li:hover {
+            opacity: 0.6;
+        }
     }
 }

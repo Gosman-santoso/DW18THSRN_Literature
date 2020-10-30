@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { Context } from "../../context/context";
 import { API } from "../../config/api";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 
 import "./detail.css";
@@ -75,7 +75,7 @@ function Detail() {
       <Head />
       <main>
         <div className="thumb">
-          <img src={require(`${detailBook.thumbnail}`)} alt="book" />
+          <img src={detailBook.thumbnail} alt="book" />
         </div>
         <form onSubmit={e => handleStore(e)}>
           <BtnBookmark />

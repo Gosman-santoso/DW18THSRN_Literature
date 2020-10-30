@@ -2,14 +2,17 @@ import React, { useState, useContext, useEffect } from "react";
 
 import { API } from "../../config/api";
 import { Context } from "../../context/context";
+import { Link, useHistory } from "react-router-dom";
 
 import "./myliterature.css";
 
 function MyLiterature() {
+  const history = useHistory();
+
   const [state, dispatch] = useContext(Context);
 
   // get book with id user
-  const [booksUser, setBooks] = useState([]);
+  const [literature, setLiterature] = useState([]);
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -21,7 +24,7 @@ function MyLiterature() {
 
         const res = await API.get(`/user/${state.user?.id}`);
 
-        setBooks(res.data.data.User.literature);
+        setLiterature(res.data.data.User.literature);
         setLoading(false);
       } catch (err) {
         setLoading(false);
@@ -33,29 +36,29 @@ function MyLiterature() {
 
   return (
     <div className="list-book">
-      <h1 style={{ marginTop: "2vh" }}>My Literatures</h1>
+      <h1>My Literatures</h1>
       <ul>
-        {loading || !booksUser ? (
+        {loading || !literature ? (
           <h1> Loading... </h1>
         ) : (
-          booksUser.map((book, index) =>
-            book.status == "Approved" ? (
-              <li>
-                <div style={{ marginTop: "5px" }}>
-                  <img src={book.thumbnail} alt="" />
-                  <h5>{book.title}</h5>
-                  <p>{book.author}</p>
-                </div>
-              </li>
+          literature.map(literature =>
+            literature.status == "Approved" ? (
+              <Link onClick={() => history.push(`/detail/${literature.id}`)}>
+                <li>
+                  <div style={{ marginTop: "5px" }}>
+                    <img src={literature.thumbnail} alt="" />
+                    <h5>{literature.title}</h5>
+                    <p>{literature.author}</p>
+                  </div>
+                </li>
+              </Link>
             ) : (
               <li>
-                <div style={{ marginTop: "5px" }}>
-                  <img src={book.thumbnail} alt="" />
-                  <h5>{book.title}</h5>
-                  <p>{book.author}</p>
-                  <div className="overlay">
-                    <h5>Waiting to be approved</h5>
-                  </div>
+                <img src={literature.thumbnail} alt="" />
+                <h5>{literature.title}</h5>
+                <p>{literature.author}</p>
+                <div className="overlay">
+                  <h5>Waiting to be approved</h5>
                 </div>
               </li>
             )
