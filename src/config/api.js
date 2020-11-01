@@ -28,9 +28,9 @@ export const setAuthToken = token => {
 
 // netify
 export const urlAsset = {
-  img: "https://my-literature.herokuapp.com/src/uploads/img/",
-  pdf: "https://my-literature.herokuapp.com/src/uploads/pdf/",
+  img: "https://my-literature.herokuapp.com/uploads/img/",
+  pdf: "https://my-literature.herokuapp.com/uploads/pdf/",
 
-  file: "https://my-literature.herokuapp.com/src/public/files/",
-  thumbnail: "https://my-literature.herokuapp.com/src/public/thumbnails/"
+  file: "https://my-literature.herokuapp.com/public/files/",
+  thumbnail: "https://my-literature.herokuapp.com/public/thumbnails/"
 };
