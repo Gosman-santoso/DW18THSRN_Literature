@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import { Context } from "./../../../context/context";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { API, setAuthToken } from "../../../config/api";
-import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 import "./btn-login.css";
 

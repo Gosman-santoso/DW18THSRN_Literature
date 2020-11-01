@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
-import { useHistory, Link } from "react-router-dom";
-import { InputGroup, FormControl, Button } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import { InputGroup, Button } from "react-bootstrap";
 import { BsSearch } from "react-icons/bs";
-import { API } from "../../config/api";
 
 import "./btnSearch.css";
 

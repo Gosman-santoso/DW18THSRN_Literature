@@ -1,7 +1,7 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 
 import { API, urlAsset } from "../../../config/api";
-import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
+import { Modal } from "react-bootstrap";
 
 import "./btn-regist.css";
 

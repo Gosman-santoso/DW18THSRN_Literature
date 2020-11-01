@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import { ImCancelCircle } from "react-icons/im";
 import { Context } from "../../../context/context";

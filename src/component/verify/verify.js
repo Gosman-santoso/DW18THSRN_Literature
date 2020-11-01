@@ -4,7 +4,6 @@ import { API } from "../../config/api";
 import { Table } from "react-bootstrap";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { HiXCircle } from "react-icons/hi";
-import { MdCancel } from "react-icons/md";
 import { useQuery, useMutation } from "react-query";
 
 import HeaderAdm from "../headAdm/headAdm";
@@ -102,7 +101,7 @@ function Verify() {
                       color:
                         literature.status == "Approved"
                           ? "#0ACF83"
-                          : literature.status == "Cancel"
+                          : literature.status == "Canceled"
                           ? "#FF0742"
                           : "#F7941E",
                       textAlign: "center"
@@ -110,8 +109,8 @@ function Verify() {
                   >
                     {literature.status == "Approved"
                       ? "Approved"
-                      : literature.status == "Cancel"
-                      ? "Cancel"
+                      : literature.status == "Canceled"
+                      ? "Canceled"
                       : "Waiting"}
                   </td>
 
