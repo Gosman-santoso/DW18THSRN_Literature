@@ -15,11 +15,14 @@
 }
 
 .box-detail main .thumb {
-  width: 45vh;
+  width: 43vh;
+  height: 60vh;
 }
 
 .box-detail main .thumb img {
   width: 100%;
+  height: 100%;
+  border-radius: 8px;
 }
 
 .box-detail main ul {

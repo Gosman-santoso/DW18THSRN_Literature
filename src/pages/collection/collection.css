@@ -8,6 +8,7 @@
   width: 80%;
   margin: auto;
   margin-top: 48px;
+  font-family: "Poppins";
 }
 
 .box-collection .my-collection h1 {
@@ -50,6 +51,12 @@
 .box-collection .my-collection ul li h5 {
   color: white;
   margin: 5px;
+}
+
+.box-collection .my-collection ul li h5 {
+  font-weight: bold;
+  max-height: 3.7vh;
+  overflow: hidden;
 }
 
 .box-collection .my-collection ul li:hover {

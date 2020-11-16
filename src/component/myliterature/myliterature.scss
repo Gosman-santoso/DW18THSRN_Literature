@@ -31,6 +31,11 @@
                 color: white;
                 margin: 5px;
             }
+            h5 {
+                font-weight: bold;
+                max-height: 4.2vh;
+                overflow: hidden;
+            }
         }
         li:hover {
             opacity: 0.6;

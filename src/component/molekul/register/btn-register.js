@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 
 import { API, urlAsset } from "../../../config/api";
-import { Modal } from "react-bootstrap";
+import { Modal, Alert } from "react-bootstrap";
+import { AlertRegist } from "../../../component/atom/alert/alertRegist";
 
 import "./btn-regist.css";
 
 function BtnRegister() {
   const [show, setShow] = useState(false);
+  const [showAlert, setShowAlert] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -17,13 +20,12 @@ function BtnRegister() {
     fullName: "",
     gender: "",
     phone: "",
-    address: "",
-    avatar: `${urlAsset.img}profile-default.jpg`
+    address: ""
   });
 
   const [book, setBook] = useState([]);
 
-  const { email, password, fullName, gender, phone, address, avatar } = formAdd;
+  const { email, password, fullName, gender, phone, address } = formAdd;
 
   const handleChange = e => {
     setFormAdd({ ...formAdd, [e.target.name]: e.target.value });
@@ -50,17 +52,27 @@ function BtnRegister() {
       const res = await API.post("/register", body, config);
 
       setBook([...book, res.data.data]);
-      alert("Succses");
+      setFormAdd({
+        email: "",
+        password: "",
+        fullName: "",
+        gender: "",
+        phone: "",
+        address: ""
+      });
+      setShowAlert(true);
     } catch (err) {
       console.log(err);
-      alert("Failed");
+      setShowAlert(false);
+      setErrorMessage("Failed. Please check form again");
+      // alert("Failed");
     }
   };
 
   return (
     <div className="box-regist">
       <button className="landing-btn-regist" onClick={() => handleShow()}>
-        Register
+        Sign Up
       </button>
 
       <Modal className="modalRegist lg-col-5" show={show} onHide={handleClose}>
@@ -105,6 +117,9 @@ function BtnRegister() {
                 setFormAdd({ ...formAdd, gender: e.target.value });
               }}
             >
+              <option value="" disable selected hidden>
+                Gender
+              </option>
               <option className="inputan" value="male">
                 Man
               </option>
@@ -134,11 +149,33 @@ function BtnRegister() {
               variant="danger"
               onClick={handleClose}
             >
-              Register
+              Sign Up
             </button>
           </Modal.Body>
         </form>
       </Modal>
+
+      {errorMessage ? (
+        <AlertRegist
+          show={showAlert}
+          onHide={() => {
+            handleClose();
+            setShowAlert(false);
+          }}
+        >
+          <p>Failed. Please check your form again</p>
+        </AlertRegist>
+      ) : (
+        <AlertRegist
+          show={showAlert}
+          onHide={() => {
+            handleClose();
+            setShowAlert(false);
+          }}
+        >
+          <p>Your account succsessfully created</p>
+        </AlertRegist>
+      )}
     </div>
   );
 }

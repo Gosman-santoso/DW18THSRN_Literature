@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -12,7 +12,6 @@ import Collection from "./pages/collection/collection";
 import AddLiterature from "./pages/literature/addLiterature";
 import SearchResult from "./component/molekul/search-result/searchResult";
 import Detail from "./component/detail/detail";
-
 import AdmMain from "./pages/mainAdm/mainAdm";
 
 import { API, setAuthToken } from "./config/api";
@@ -57,7 +56,7 @@ function App() {
         <PrivateRoute path="/addLiterature" exact component={AddLiterature} />
         <PrivateRoute path="/detail/:id" exact component={Detail} />
 
-        <Route path="/mainAdm" exact component={AdmMain} />
+        <PrivateRoute path="/mainAdm" exact component={AdmMain} />
       </Switch>
     </BrowserRouter>
   );

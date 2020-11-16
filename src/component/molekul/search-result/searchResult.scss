@@ -2,8 +2,10 @@ $primary-color: #161616;
 $primary-text: white;
 $font: "Poppins";
 .box-search-result {
-    width: 100%;
     background: $primary-color;
+    width: 100%;
+    min-height: 100vh;
+    padding-bottom: 5vh;
     .box-list-search {
         width: 80%;
         margin: auto;
@@ -15,9 +17,38 @@ $font: "Poppins";
         display: flex;
         width: 100%;
         justify-content: space-between;
-        .box-list-literature {
+        // .box-list-literature {
+        //     display: flex;
+        //     width: 90%;
+        // }
+        ul {
             display: flex;
-            width: 90%;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 0;
+            width: 100%;
+            li {
+                align-self: flex-start;
+                margin: 3vh 2vh;
+                overflow: hidden;
+                transition: 0.1s;
+                width: 30vh;
+                cursor: pointer;
+                img {
+                    width: 100%;
+                    height: 40vh;
+                    overflow: hidden;
+                    border-radius: 8px;
+                }
+                p,
+                h5 {
+                    color: $primary-text;
+                    margin: 5px;
+                }
+            }
+            li:hover {
+                opacity: 0.6;
+            }
         }
     }
 }

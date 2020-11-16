@@ -47,12 +47,26 @@ function MyLiterature() {
                 <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
                 <h5>{literature.title}</h5>
                 <p>{literature.author}</p>
+                <p>
+                  {literature.publication_date != null && (
+                    <small className="text-muted">
+                      {literature.publication_date.slice(0, 4)}
+                    </small>
+                  )}
+                </p>
               </li>
             ) : (
               <li style={{ position: "relative", display: "block" }}>
                 <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
                 <h5>{literature.title}</h5>
                 <p>{literature.author}</p>
+                <p>
+                  {literature.publication_date != null && (
+                    <small className="text-muted">
+                      {literature.publication_date.slice(0, 4)}
+                    </small>
+                  )}
+                </p>
                 <div className="overlay">
                   <h3>Waiting to be approved</h3>
                 </div>

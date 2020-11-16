@@ -38,8 +38,23 @@ function ListLiterature() {
           booksUser.map(literature => (
             <li onClick={() => history.push(`/detail/${literature.id}`)}>
               <img src={urlAsset.thumbnail + literature.thumbnail} alt="" />
-              <h5> {literature.title} </h5>
+              <h5
+                style={{
+                  display: "block",
+                  maxHeight: "4.2vh",
+                  overflowY: "hidden"
+                }}
+              >
+                {literature.title}
+              </h5>
               <p> {literature.author} </p>
+              <p>
+                {literature.publication_date != null && (
+                  <small className="text-muted">
+                    {literature.publication_date.slice(0, 4)}
+                  </small>
+                )}
+              </p>
             </li>
           ))
         )}

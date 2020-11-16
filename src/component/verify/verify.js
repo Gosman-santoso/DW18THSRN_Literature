@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 
-import { API } from "../../config/api";
+import { API, urlAsset } from "../../config/api";
 import { Table } from "react-bootstrap";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { HiXCircle } from "react-icons/hi";
 import { useQuery, useMutation } from "react-query";
 
+import SplashScreen from "../atom/splash/splash";
 import HeaderAdm from "../headAdm/headAdm";
 
 import "./verify.css";
@@ -13,14 +14,15 @@ import "./verify.css";
 function Verify() {
   const [loading, setLoading] = useState(true);
 
+
   // Load literatures
-  const [literatures, setLiterature] = useState([]);
+  const [getAllLiteratures, setGetAllLiteratures] = useState([]);
 
   useEffect(() => {
     const loadLiterature = async () => {
       try {
         const res = await API.get("/AdmLiteratures");
-        setLiterature(res.data.data.literature);
+        setGetAllLiteratures(res.data.data.literature);
         setLoading(false);
       } catch (err) {
         setLoading(false);
@@ -30,13 +32,12 @@ function Verify() {
     loadLiterature();
   }, []);
 
-  // Update Status
   const {
     isLoading,
     error,
     data: literatureData,
     refetch
-  } = useQuery("getLiteratureAll", () => API.get(`/AdmLiteratures`));
+  } = useQuery("getLiteratures", () => API.get("/AdmLiteratures"));
 
   const [approveBook] = useMutation(async id => {
     try {
@@ -79,6 +80,7 @@ function Verify() {
             <tr>
               <th>No</th>
               <th>Author</th>
+              <th>Title</th>
               <th>ISBN</th>
               <th>E-book</th>
               <th>Status</th>
@@ -86,84 +88,63 @@ function Verify() {
             </tr>
           </thead>
           <tbody>
-            {isLoading || !literatures ? (
-              <h5>Loading..</h5>
+            {isLoading ? (
+              <SplashScreen />
             ) : (
-              literatures.map((literature, index) => (
+              literatureData.data.data.literature.map((liter, index) => (
                 <tr>
-                  {/* {console.log(book)} */}
                   <td>{index + 1}</td>
-                  <td>{literature.user_id.fullName}</td>
-                  <td>{literature.ISBN}</td>
-                  <td>{literature.file}</td>
+                  <td>
+                    {liter.author}
+                  </td>
+                  <td style={{ width: "35vh" }}>{liter.title}</td>
+                  <td>{liter.ISBN}</td>
+                  <td>
+                    <a href={urlAsset.file + liter.file} download>
+                      {liter.file}
+                    </a>
+                  </td>
                   <td
                     style={{
                       color:
-                        literature.status == "Approved"
+                        liter.status == "Approved"
                           ? "#0ACF83"
-                          : literature.status == "Canceled"
+                          : liter.status == "Canceled"
                           ? "#FF0742"
                           : "#F7941E",
                       textAlign: "center"
                     }}
                   >
-                    {literature.status == "Approved"
+                    {liter.status == "Approved"
                       ? "Approved"
-                      : literature.status == "Canceled"
+                      : liter.status == "Canceled"
                       ? "Canceled"
                       : "Waiting"}
                   </td>
 
-                  <td>
-                    {literature.status === "Approved" ? (
+                  <td style={{ textAlign: "center" }}>
+                    {liter.status === "Approved" ? (
                       <AiFillCheckCircle size={40} color="#3BB54A" />
-                    ) : literature.status === "Canceled" ? (
+                    ) : liter.status === "Canceled" ? (
                       <HiXCircle size={40} color="#FF0742" />
                     ) : (
                       <>
                         <button
                           className="btn btn-danger btn-sm"
                           style={{ marginRight: 10 }}
-                          onClick={() => cancelBook(literature.id)}
+                          onClick={() => cancelBook(liter.id)}
                         >
                           Cancel
                         </button>
                         <button
                           className="btn btn-success btn-sm"
-                          onClick={() => approveBook(literature.id)}
+                          onClick={() => approveBook(liter.id)}
                         >
                           Approve
                         </button>
                       </>
                     )}
                   </td>
-
-                  {/* {literature.status == "Approved" ? (
-                    <td style={{ textAlign: "center" }}>
-                      <AiFillCheckCircle
-                        style={{
-                          color: "#3BB54A",
-                          fontSize: "30px"
-                        }}
-                      />
-                    </td>
-                  ) : literature.status == "Canceled" ? (
-                    <MdCancel style={{ color: "red" }} />
-                  ) : (
-                    <td style={{ textAlign: "center" }}>
-                      <button
-                        style={{ marginRight: "10px" }}
-                        className="btn btn-danger"
-                        type="submit"
-                      >
-                        Cancel
-                      </button>
-
-                      <button className="btn btn-success" type="submit">
-                        Approve
-                      </button>
-                    </td>
-                  )} */}
                 </tr>
               ))
             )}

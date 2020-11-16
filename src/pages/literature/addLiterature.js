@@ -17,7 +17,6 @@ function AddLiterature() {
   const [state] = useContext(Context);
   const [showAlert, setShowAlert] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [setWhen] = useState("");
 
   const SUPPORTED_FORMATS_IMAGE = ["image/jpg", "image/jpeg", "image/png"];
   const SUPPORTED_FORMATS_FILE = ["application/pdf"];

@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "AAAA,AAEQ,aAFK,CACT,IAAI,CACA,gBAAgB,CAAC;EACb,UAAU,EAAE,UAAU;CACzB",
-    "sources": [
-        "btn-category.scss"
-    ],
-    "names": [],
-    "file": "btn-category.css"
-}

@@ -4,3 +4,7 @@
 [1026/193218.049:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\GOSMAN\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\80c6bf57-819e-4900-888c-6300e1736ead: The system cannot find the path specified. (0x3)
 [1029/181935.789:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
 [1031/134808.099:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1103/094003.222:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1107/212946.669:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1109/192944.411:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)
+[1112/084756.642:ERROR:directory_reader_win.cc(43)] FindFirstFile: The system cannot find the path specified. (0x3)

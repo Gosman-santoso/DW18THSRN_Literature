@@ -45,6 +45,12 @@
   margin: 5px;
 }
 
+.list-book ul li h5 {
+  font-weight: bold;
+  max-height: 4.2vh;
+  overflow: hidden;
+}
+
 .list-book ul li:hover {
   opacity: 0.6;
 }

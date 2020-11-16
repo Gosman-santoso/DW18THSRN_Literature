@@ -1,6 +1,8 @@
 .box-search-result {
-  width: 100%;
   background: #161616;
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 5vh;
 }
 
 .box-search-result .box-list-search {
@@ -21,10 +23,42 @@
           justify-content: space-between;
 }
 
-.box-search-result .box-select-literature .box-list-literature {
+.box-search-result .box-select-literature ul {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 90%;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+}
+
+.box-search-result .box-select-literature ul li {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+  margin: 3vh 2vh;
+  overflow: hidden;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+  width: 30vh;
+  cursor: pointer;
+}
+
+.box-search-result .box-select-literature ul li img {
+  width: 100%;
+  height: 40vh;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.box-search-result .box-select-literature ul li p,
+.box-search-result .box-select-literature ul li h5 {
+  color: white;
+  margin: 5px;
+}
+
+.box-search-result .box-select-literature ul li:hover {
+  opacity: 0.6;
 }
 /*# sourceMappingURL=searchResult.css.map */

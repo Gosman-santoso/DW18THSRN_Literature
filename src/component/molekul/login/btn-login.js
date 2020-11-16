@@ -4,12 +4,14 @@ import { Context } from "./../../../context/context";
 import { useHistory } from "react-router-dom";
 import { API, setAuthToken } from "../../../config/api";
 import { Modal } from "react-bootstrap";
+import { AlertRegist } from "../../../component/atom/alert/alertRegist";
 
 import "./btn-login.css";
 
 function BtnLogin() {
   const [show, setShow] = useState(false);
   const [state, dispatch] = useContext(Context);
+  const [showAlert, setShowAlert] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -47,7 +49,7 @@ function BtnLogin() {
 
       setAuthToken(res.data.data.token);
 
-      if (email === "admin@gmail.com" && password === "admin123") {
+      if (email == "admin@gmail.com" && password == "admin123") {
         history.push("/mainAdm");
         dispatch({
           type: "LOGIN_SUCCSES",
@@ -77,7 +79,7 @@ function BtnLogin() {
       console.log("Succses");
       history.push("/main");
     } catch (err) {
-      alert("fail");
+      setShowAlert(true);
       dispatch({
         type: "LOGIN_FAIL"
       });
@@ -126,6 +128,15 @@ function BtnLogin() {
           </Modal.Body>
         </form>
       </Modal>
+      <AlertRegist
+        show={showAlert}
+        onHide={() => {
+          handleClose();
+          setShowAlert(false);
+        }}
+      >
+        <p>Username or Password invalid</p>
+      </AlertRegist>
     </div>
   );
 }

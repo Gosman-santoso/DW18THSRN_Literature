@@ -5,120 +5,129 @@ import { API, urlAsset } from "../../config/api";
 import { useParams } from "react-router-dom";
 import { AiOutlineCloudDownload } from "react-icons/ai";
 import { FaRegBookmark } from "react-icons/fa";
+import { useQuery, useMutation } from "react-query";
 
-import "./detail.css";
 import Head from "../../component/head/head";
-import BtnBookmark from "../molekul/btn-bookmark/bookmark";
+import SplashScreen from "../../component/atom/splash/splash";
+import "./detail.css";
 
 function Detail() {
   // get Detail Book
+  const [state] = useContext(Context);
   const { id } = useParams();
-  const [state] = useState(Context);
-
-  const [detailBook, setDetailBook] = useState([]);
-  const [collection, setCollection] = useState("");
-  const [loading, setLoading] = useState(true);
+  const idUser = state.user?.id;
 
   // get literature
+  const { isLoading, data: literatureData } = useQuery("getLiterature", () =>
+    API.get(`/literature/${id}`)
+  );
 
-  useEffect(() => {
-    const loadLiterature = async () => {
-      try {
-        setLoading(true);
-
-        const res = await API.get(`/literature/${id}`);
-
-        setDetailBook(res.data.data.data);
-        setLoading(false);
-      } catch (err) {
-        setLoading(false);
-        console.log(err);
-      }
-    };
-    loadLiterature();
-  }, []);
+  // get library
+  const {
+    isLoading: loadingLibrary,
+    data: libraryData,
+    refetch
+  } = useQuery("getLibrary", () => API.get(`library/${id}/${idUser}`));
 
   // add library
-
-  const [formAdd, setFormAdd] = useState({
-    literatureId: id,
-    userId: state.user?.id
-  });
-
-  const [add, setAdd] = useState([]);
-
-  const { literatureId, userId } = formAdd;
-
-  const handleStore = async e => {
-    e.preventDefault();
+  const [addLibrary] = useMutation(async () => {
     try {
       const config = {
         headers: {
-          "Content-Type": "application/json"
+          "Content-type": "application/json"
         }
       };
-
       const body = JSON.stringify({
-        literatureId,
-        userId
+        literatureId: id,
+        userId: idUser
       });
-
-      const res = await API.post("/libraries", body, config);
-
-      setAdd([...add, res.data.data.library]);
-      alert("Add to library");
+      await API.post(`/libraries`, body, config);
+      refetch();
     } catch (err) {
+      alert(err);
       console.log(err);
-      alert("Failed");
     }
-  };
+  });
+
+  const [removeLibrary] = useMutation(async () => {
+    try {
+      await API.delete(`/library/${id}/${idUser}`);
+      refetch();
+    } catch (err) {
+      alert(err);
+      console.log(err);
+    }
+  });
 
   return (
     <div className="box-detail">
       <Head />
-      <main>
-        <div className="thumb">
-          <img src={urlAsset.thumbnail + detailBook.thumbnail} alt="book" />
-        </div>
-        <form onSubmit={e => handleStore(e)}>
-          <button
-            className="bookmark active"
-            type="submit"
-            style={{ position: "absolute", right: "0" }}
-          >
-            Add My Collection <FaRegBookmark />
-          </button>
-        </form>
-        <ul>
-          <li>
-            <h1>{detailBook.title}</h1>
-            <p>{detailBook.user_id?.fullName}</p>
-          </li>
-
-          <li>
-            <h5>Publication date</h5>
-            <p>{detailBook.publication_date}</p>
-          </li>
-          <li>
-            <h5>Pages</h5>
-
-            <p>{detailBook.pages}</p>
-          </li>
-          <li>
-            <h5 style={{ color: "#AF2E1C" }}>
-              <strong>ISBN</strong>
-            </h5>
-            <p>{detailBook.ISBN}</p>
-          </li>
-          <li>
-            <a href={urlAsset.file + detailBook.file} download>
-              <button className="active" type="submit">
-                Download <AiOutlineCloudDownload />
+      {isLoading || loadingLibrary || !literatureData ? (
+        <SplashScreen />
+      ) : (
+        <main>
+          <div className="thumb">
+            <img
+              src={
+                urlAsset.thumbnail +
+                literatureData.data.data.literature.thumbnail
+              }
+              alt="book"
+            />
+          </div>
+          <>
+            {libraryData.data.data.library == null ? (
+              <button
+                className="bookmark active"
+                style={{ position: "absolute", right: "0" }}
+                onClick={() => addLibrary()}
+              >
+                Add Collection <FaRegBookmark />
               </button>
-            </a>
-          </li>
-        </ul>
-      </main>
+            ) : (
+              <button
+                className="bookmark active"
+                style={{ position: "absolute", right: "0" }}
+                onClick={() => removeLibrary()}
+              >
+                Remove Collection <FaRegBookmark />
+              </button>
+            )}
+          </>
+          <ul>
+            <li>
+              <h1>{literatureData.data.data.literature.title}</h1>
+              <p>{literatureData.data.data.literature.user_id?.fullName}</p>
+            </li>
+
+            <li>
+              <h5>Publication date</h5>
+              <p>{literatureData.data.data.literature.publication_date}</p>
+            </li>
+            <li>
+              <h5>Pages</h5>
+
+              <p>{literatureData.data.data.literature.pages}</p>
+            </li>
+            <li>
+              <h5 style={{ color: "#AF2E1C" }}>
+                <strong>ISBN</strong>
+              </h5>
+              <p>{literatureData.data.data.literature.ISBN}</p>
+            </li>
+            <li>
+              <a
+                href={urlAsset.file + literatureData.data.data.literature.file}
+                download
+              >
+                <button className="active" type="submit">
+                  Download <AiOutlineCloudDownload />
+                </button>
+              </a>
+            </li>
+          </ul>
+        </main>
+      )}
     </div>
   );
 }

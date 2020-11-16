@@ -9,6 +9,7 @@ $font: "Poppins";
         width: 80%;
         margin: auto;
         margin-top: 48px;
+        font-family: $font;
         h1 {
             color: $primary-text;
             font-family: "Times New Roman", Times, serif;
@@ -38,6 +39,11 @@ $font: "Poppins";
                 h5 {
                     color: $primary-text;
                     margin: 5px;
+                }
+                h5 {
+                    font-weight: bold;
+                    max-height: 3.7vh;
+                    overflow: hidden;
                 }
             }
             li:hover {
