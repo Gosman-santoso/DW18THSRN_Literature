@@ -14,7 +14,6 @@ const TimePeriod = props => {
         <select
           className="custom-select my-2"
           onChange={e => {
-            console.log(`berhasil change ${e.target.value}`);
             props.setYear(e.target.value);
             history.push(
               `/search?title=${props.isQuery}&public_year=${e.target.value}`

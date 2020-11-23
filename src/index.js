@@ -5,6 +5,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import { ContextProvider } from "./context/context";
+import firebase from "./config/firebase";
+
+console.log(firebase);
 
 ReactDOM.render(
   <React.StrictMode>

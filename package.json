@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "bootstrap": "^4.5.3",
+    "firebase": "^8.1.1",
     "formik": "^2.2.1",
     "formix": "0.0.1",
     "node-sass": "^4.14.1",
